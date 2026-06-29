@@ -58,3 +58,25 @@ class ExpenseTracker:
             values = ["Income", "Expense"]
         )
         self.type_combo.grid(row = 3, column = 1)
+
+        # Buttons
+        # Calls add_transaction() when clicked.
+        tk.Button(
+            root,
+            text = "Add",
+            command = self.add_transaction
+        ).grid(row = 4, column = 0)
+
+        # Calls update_transaction when clicked. 
+        tk.Button(
+            root,
+            text = "Update"
+            command = self.update_transaction
+        ).grid(row = 4, column = 2)
+
+        # Calls delete transaction when clicked. 
+        tk.Button(
+            root,
+            text = "Delete",
+            command = self.delete_transaction
+        ).rid(row = 4, column = 2)
