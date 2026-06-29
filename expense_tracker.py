@@ -92,3 +92,21 @@ class ExpenseTracker:
             ),
             show = "headings"
         )
+
+        # Create headings in each column of the table.
+        for col in (
+            "Description",
+            "Amount",
+            "Category",
+            "Type"
+        ):
+            self.tree.heading(col, text = col)
+
+        # Position Treeview in the window. 
+        self.tree.grid(
+            row = 5,
+            column = 0,
+            columnspan = 3, 
+            padx = 10,
+            pady = 10
+        )
