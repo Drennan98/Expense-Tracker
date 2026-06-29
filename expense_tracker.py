@@ -110,3 +110,8 @@ class ExpenseTracker:
             padx = 10,
             pady = 10
         )
+
+        self.tree.bind(
+            "<<TreeViewSelect>>",
+            self.select_record
+        )
