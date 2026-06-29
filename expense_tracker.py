@@ -108,8 +108,96 @@ class ExpenseTracker:
         )
 
     def add_transaction(self):
-        # Get the values entered by the user.
+        """
+        Get the values entered by the user.
+        """
         description = self.description_entry.get()
         amount = self.amount_entry.get()
         category = self.category_entry.get()
         transaction_type = self.type_combo.get()
+
+        if not description or not amount:
+            messagebox.showerror(
+                "Error",
+                "Please complete all required fields."
+            )
+            return
+        
+        self.tree.insert(
+            "",
+            "end",
+            values = (
+                description,
+                amount,
+                category,
+                transaction_type
+            )
+        )
+        # Clear the input fields. 
+        self.clear_fields()
+
+    
+    
+    def select_record(self, event):
+        """
+        Get the selected row.
+        """
+        selected = self.tree.focus()
+
+        if selected: 
+            # Retrieve the values from the selected rows. 
+            values = self.tree.item(selected, "values")
+
+            # Display the values inside.
+            self.description_entry.delete(0, tk.END)
+            self.description_entry.insert(0, values[0])
+
+            self.amount_entry.delete(0, tk.END)
+            self.amount_entry.insert(0, values[1])
+
+            self.category_entry.delete(0, tk.END)
+            self.category_entry.insert(0, values[2])
+
+            self.type_combo.set(values[3])
+
+    
+    def update_transaction(self):
+        """
+        Update transaction function.
+        """
+        #  Get the selected row.
+        selected = self.tree.focus()
+
+        self.tree.item(
+            selected,
+            values = (
+                self.description_entry.get(),
+                self.amount_entry.get(),
+                self.category_entry.get(),
+                self.type_combo.get()
+            )
+        )
+
+    
+    def delete_transaction(self):
+        """
+        Delete transaction function.
+        """
+        # Get the selected row.
+        selected = self.tree.focus()
+
+        if selected:
+            self.tree.delete(selected)
+
+
+    
+    def clear_fields(self):
+        """
+        Clear all input fields.
+        """
+        self.description_entry.delete(0, tk.END)
+        self.amount_entry.delete(0, tk.END)
+        self.category_entry.delete(0, tk.END)
+
+        self.type_combo.set("")
+
