@@ -56,7 +56,7 @@ class ExpenseTracker:
             root,
             text = "Update",
             command = self.update_transaction
-        ).grid(row = 4, column = 2)
+        ).grid(row = 4, column = 1)
 
         # Calls delete transaction when clicked. 
         tk.Button(
@@ -64,6 +64,13 @@ class ExpenseTracker:
             text = "Delete",
             command = self.delete_transaction
         ).grid(row = 4, column = 2)
+
+        # Calls clear_fields() when clicked.
+        tk.Button(
+            root,
+            text="Clear",
+            command=self.clear_fields
+        ).grid(row=4, column=3)
 
         # Treeview -> Create table to display all transactions.
         self.tree = ttk.Treeview(
@@ -96,6 +103,6 @@ class ExpenseTracker:
         )
 
         self.tree.bind(
-            "<<TreeViewSelect>>",
+            "<<TreeviewSelect>>",
             self.select_record
         )
