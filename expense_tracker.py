@@ -70,7 +70,7 @@ class ExpenseTracker:
         # Calls update_transaction when clicked. 
         tk.Button(
             root,
-            text = "Update"
+            text = "Update",
             command = self.update_transaction
         ).grid(row = 4, column = 2)
 
@@ -79,4 +79,16 @@ class ExpenseTracker:
             root,
             text = "Delete",
             command = self.delete_transaction
-        ).rid(row = 4, column = 2)
+        ).grid(row = 4, column = 2)
+
+        # Treeview -> Create table to display all transactions.
+        self.tree = ttk.Treeview(
+            root,
+            columns = (
+                "Description",
+                "Amount",
+                "Category",
+                "Type"
+            ),
+            show = "headings"
+        )
