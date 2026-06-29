@@ -97,7 +97,7 @@ class ExpenseTracker:
         self.tree.grid(
             row = 5,
             column = 0,
-            columnspan = 3, 
+            columnspan = 4, 
             padx = 10,
             pady = 10
         )
@@ -106,3 +106,10 @@ class ExpenseTracker:
             "<<TreeviewSelect>>",
             self.select_record
         )
+
+    def add_transaction(self):
+        # Get the values entered by the user.
+        description = self.description_entry.get()
+        amount = self.amount_entry.get()
+        category = self.category_entry.get()
+        transaction_type = self.type_combo.get()
