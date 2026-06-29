@@ -201,3 +201,12 @@ class ExpenseTracker:
 
         self.type_combo.set("")
 
+# Create the main Tkinter window.
+root = tk.Tk()
+
+# Create an ExpenseTracker object. 
+app = ExpenseTracker(root)
+
+# Start the event loop and wait for interaction.
+root.mainloop()
+
