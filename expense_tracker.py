@@ -23,7 +23,7 @@ class ExpenseTracker:
         tk.Label(root, text="Category").grid(row = 2, column = 0)
         tk.Label(root, text="Type").grid(row = 3, column = 0)
 
-        # Entry fields
+        # Entry fields.
         self.description_entry = tk.Entry(root)
         self.description_entry.grid(row = 1, column = 1)
 
@@ -51,3 +51,10 @@ class ExpenseTracker:
         # Text box for entering category. 
         self.category_entry = tk.Entry(root)
         self.category_entry.grid(row = 2, column = 1)
+
+        # Dropdown menu for selecting Income and Expense. 
+        self.type_combo = ttk.Combobox(
+            root,
+            values = ["Income", "Expense"]
+        )
+        self.type_combo.grid(row = 3, column = 1)
